@@ -1,1 +1,13 @@
-<p>emissions works!</p>
+<mat-form-field>
+  <mat-label>Vessel</mat-label>
+  <mat-select [(value)]="selectedEmission" (selectionChange)="onSelectVessel()">
+    <mat-option [value]="option" *ngFor="let option of emissions">{{ option.id }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<highcharts-chart 
+  [Highcharts]="Highcharts"
+  [options]="chartOptions"
+  [(update)]="updateFlag"
+  
+></highcharts-chart>

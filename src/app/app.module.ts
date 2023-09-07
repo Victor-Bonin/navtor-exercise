@@ -10,6 +10,10 @@ import { VesselsComponent } from './vessels/vessels.component';
 import { EmissionsComponent } from './emissions/emissions.component';
 import { ApiService } from './services/api.service'
 import { AgGridModule } from 'ag-grid-angular';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +26,9 @@ import { AgGridModule } from 'ag-grid-angular';
     AppRoutingModule,
     HttpClientModule,
     AgGridModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    HighchartsChartModule,
     StoreModule.forRoot({}, {}),
     BrowserAnimationsModule
   ],
