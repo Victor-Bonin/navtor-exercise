@@ -2,6 +2,7 @@
 
 export interface Emission {
     id: number,
+    name: string,
     timeSeries: EmissionTimeSeriesValue[],
 }
 

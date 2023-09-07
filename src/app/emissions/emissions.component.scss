@@ -1,8 +1,19 @@
 :host {
     padding: 10px;
+    height: calc(100% - 70px);
+    display: block;
 }
 
 highcharts-chart {
     height: 500px; 
     display: block;
+}
+
+.options-footer {
+    display: flex;
+
+    > button {
+        margin-right: 20px;
+        margin-left: auto;
+    }
 }

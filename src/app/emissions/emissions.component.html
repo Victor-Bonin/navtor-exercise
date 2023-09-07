@@ -1,7 +1,7 @@
 <mat-form-field>
   <mat-label>Vessel</mat-label>
-  <mat-select [(value)]="selectedEmission" (selectionChange)="onSelectVessel()">
-    <mat-option [value]="option" *ngFor="let option of emissions">{{ option.id }}</mat-option>
+  <mat-select [(value)]="selectedEmission" (selectionChange)="onSelectEmission()">
+    <mat-option [value]="option" *ngFor="let option of emissions">{{ option.name }}</mat-option>
   </mat-select>
 </mat-form-field>
 
@@ -11,3 +11,11 @@
   [(update)]="updateFlag"
   
 ></highcharts-chart>
+
+<div class="options-footer">
+  <mat-checkbox (change)="onCheckLogarithmic($event)">
+    Logarithmic scale
+  </mat-checkbox>
+  
+  <button mat-raised-button color="primary" (click)="onClickRandomizeColors()">Randomize Colors</button>
+</div>

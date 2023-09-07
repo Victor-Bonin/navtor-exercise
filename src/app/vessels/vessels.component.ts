@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
 import { Vessel } from '../model/Vessel';
-import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import { ColDef } from 'ag-grid-community';
+import { VesselService } from '../services/vessel.service';
 
 @Component({
   selector: 'app-vessels',
@@ -15,34 +15,31 @@ export class VesselsComponent implements OnInit {
   public defaultColDef: ColDef = {
     sortable: true,
     filter: true,
-  };
+    };
 
   public columnDefs: ColDef[] = [];
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private vesselService: VesselService,
+    ) {
 
   }
 
   ngOnInit() {
-    this.initVessels()
-  }
-
-  private initVessels(): void {
-    this.apiService.getVessels().subscribe((vessels: Vessel[]) => {
-      this.vessels = vessels
+    this.initVessels().then(() => {
       this.initColumnDefs()
     })
   }
 
-  public initColumnDefs(): void {
+  private async initVessels(): Promise<void> {
+    this.vessels = await this.vesselService.getVessels() 
+  }
+
+  private initColumnDefs(): void {
     const columns = []
     for (let key in this.vessels[0]) {
       columns.push({field: key})
     }
     this.columnDefs = columns
-  }
-
-  public onGridReady(params: GridReadyEvent) {
-    console.log(this.vessels)
   }
 }

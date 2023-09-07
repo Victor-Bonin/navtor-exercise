@@ -9,10 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VesselsComponent } from './vessels/vessels.component';
 import { EmissionsComponent } from './emissions/emissions.component';
 import { ApiService } from './services/api.service'
+import { VesselService } from './services/vessel.service'
 import { AgGridModule } from 'ag-grid-angular';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { reducer } from './state/application.reducer';
 
 
 @NgModule({
@@ -28,12 +33,16 @@ import { MatSelectModule } from '@angular/material/select';
     AgGridModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSnackBarModule,
+    MatCheckboxModule,
+    MatButtonModule,
     HighchartsChartModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({state: reducer}),
     BrowserAnimationsModule
   ],
   providers: [
     ApiService,
+    VesselService
     ],
   bootstrap: [AppComponent]
 })
